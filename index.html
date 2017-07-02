@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="myCtrl">
+<head>
+	<title>Angular App</title>
+	<script type="text/javascript" src="./angular.js"></script>
+	<script type="text/javascript" src="./practice.js"></script>
+</head>
+<body>
+	<form ng-submit="add()">
+		Product Name: <input type="text" ng-model="pname" />
+		Quantity<input type="text" ng-model="pquantity"/>
+		Damaged<input type="text" ng-model="pdamaged"/>
+		Status<select ng-model="pstatus">
+		<option value="1">Available</option>
+		<option value="0">Not Available</option>
+	</select>
+		<button type="submit">Submit</button>
+	</form>
+
+<table class="table" border="1">
+	<tr>
+		<th>Name
+		</th>
+		<th>Status
+		</th>
+		<th>Quantity
+		</th>
+		<th>Damaged
+		</th>
+		<th>Total Quantity</th>
+	</tr>
+	<tr ng-repeat="x in products track by $index">
+		<td>{{ x.pname }}</td>
+		<td>{{ x.pstatus }}</td>
+		<td>{{ x.pquantity }}</td>
+		<td><input type="number" value="{{ x.pdamaged }}"  ng-model="dquan[$index]"></td>
+		<td>{{ myfunc($index) }}</td>
+	</tr>
+</table>
+</body>
+</html>
